@@ -72,4 +72,5 @@ class FileStorage:
             self.save()
 
     def close(self):
-        self.reload()
+        """Reload JSON objects"""
+        return self.reload()
