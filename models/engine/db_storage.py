@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """ this module contains the database storage engine for AirBnB project """
-from sqlalchemy import create_engine
-from os import getenv
-from models.base_model import Base
-from models.user import User
-from models.state import State
-from models.city import City
+from models.base_model import BaseModel, Base
 from models.amenity import Amenity
+from models.city import City
 from models.place import Place
 from models.review import Review
-from sqlalchemy.orm import sessionmaker, scoped_session
+from models.state import State
+from models.user import User
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker, relationship, scoped_session
+from os import getenv
 
 
 class DBStorage:
@@ -68,5 +68,4 @@ class DBStorage:
         self.__session = Session()
 
     def close(self):
-        """close session of scope"""
-        self.__session.remove()
+        self.__session.close()
